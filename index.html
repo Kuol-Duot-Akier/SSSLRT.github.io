@@ -18,6 +18,9 @@
     }
 
     nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -47,6 +50,10 @@
       padding: 3rem 2rem;
       max-width: 900px;
       margin: 0 auto;
+    }
+
+    .section:nth-child(even) {
+      background: #f0f8ff;
     }
 
     .section h2 {
@@ -81,6 +88,24 @@
       padding: 1rem;
       border-left: 4px solid #ccc;
       overflow-x: auto;
+    }
+
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      padding: 10px 15px;
+      background-color: #004466;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: none;
+      z-index: 999;
+    }
+
+    #scrollTopBtn:hover {
+      background-color: #0077aa;
     }
   </style>
 </head>
@@ -187,9 +212,26 @@ Layers:
     <p>📍 Location: Juba, South Sudan</p>
   </section>
 
+  <button id="scrollTopBtn" onclick="scrollToTop()">↑ Top</button>
+
   <footer>
     <p>&copy; 2025 SSSLR-T. Open Source under MIT License.</p>
   </footer>
+
+  <script>
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.onscroll = function () {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        scrollBtn.style.display = "block";
+      } else {
+        scrollBtn.style.display = "none";
+      }
+    };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  </script>
 </body>
 
 </html>
