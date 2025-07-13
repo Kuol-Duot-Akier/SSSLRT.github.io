@@ -1,10 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Sign Language Recognition</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SSSLR-T | South Sudan Sign Language Recognition</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <h1>Welcome to the South Sudan Sign Language Recognition Project</h1>
-  <p>This site explains how the model works, how to use it, and future goals.</p>
+  <header>
+    <nav>
+      <h1>SSSLR-T</h1>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#dataset">Dataset</a></li>
+        <li><a href="#model">Model</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="section">
+    <h2>Welcome to SSSLR-T</h2>
+    <p>South Sudan Sign Language Recognition and Translation (SSSLRT) is an AI-powered system designed to recognize and translate sign language used by the deaf community in South Sudan.</p>
+    <blockquote>"Bridging the communication gap between the deaf and hearing communities in South Sudan through artificial intelligence."</blockquote>
+  </section>
+
+  <section id="about" class="section">
+    <h2>About</h2>
+    <p>South Sudanese Sign Language lacks technological support, especially in healthcare where communication barriers can be life-threatening.</p>
+    <ul>
+      <li>Recognizes common health-related signs (e.g., "malaria," "diarrhea," "sick").</li>
+      <li>Translates into readable English text.</li>
+      <li>Operates in real-time with minimal latency.</li>
+    </ul>
+    <h3>Objectives</h3>
+    <ul>
+      <li>Empower the deaf community in clinical settings.</li>
+      <li>Leverage AI for social good.</li>
+      <li>Lay the groundwork for a national sign language dataset.</li>
+    </ul>
+  </section>
+
+  <section id="dataset" class="section">
+    <h2>Dataset</h2>
+    <ul>
+      <li><strong>Total Classes:</strong> 7 health-related words</li>
+      <li><strong>Samples per Class:</strong> ~20 videos</li>
+      <li><strong>Video Length:</strong> ~2 seconds</li>
+      <li><strong>Frame Rate:</strong> 30 frames per video</li>
+      <li><strong>Features:</strong> 1662 keypoints per frame using MediaPipe Holistic</li>
+      <li><strong>Shape:</strong> (num_samples, 30, 1662)</li>
+    </ul>
+  </section>
+
+  <section id="model" class="section">
+    <h2>Model</h2>
+    <p>Our system uses a Long Short-Term Memory (LSTM) network to process video frame sequences.</p>
+    <pre>
+Input Shape: (30 frames, 1662 features)
+Layers:
+- LSTM (64 units)
+- LSTM (128 units)
+- LSTM (64 units)
+- Dense (64) + ReLU
+- Dense (32) + ReLU
+- Dense (7) + Softmax
+    </pre>
+    <p><strong>Training:</strong> 163 epochs, Adam optimizer, Categorical Crossentropy loss, built in TensorFlow/Keras.</p>
+  </section>
+
+  <section id="results" class="section">
+    <h2>Results</h2>
+    <ul>
+      <li><strong>Training Accuracy:</strong> ~98%</li>
+      <li><strong>Validation Accuracy:</strong> ~92%</li>
+      <li><strong>Latency:</strong> Less than 0.5s per prediction</li>
+    </ul>
+    <h3>Sample Predictions</h3>
+    <ul>
+      <li>Sign: "malaria" → Output: <code>Malaria</code></li>
+      <li>Sign: "sick" → Output: <code>Sick</code></li>
+      <li>Sign: "diarrhea" → Output: <code>Diarrhea</code></li>
+    </ul>
+  </section>
+
+  <section id="team" class="section">
+    <h2>Team</h2>
+    <p><strong>Project Lead:</strong> Kuol Duot Akier</p>
+    <p>BSc in Information Technology | Data Scientist | AI Enthusiast</p>
+    <p>Email: kuoldeduot23@gmail.com</p>
+    <p>Phone: +211 924729797 / +211 980061802</p>
+    <p><strong>Special Thanks:</strong></p>
+    <ul>
+      <li>MediaPipe team</li>
+      <li>TensorFlow/Keras open-source community</li>
+      <li>University of Juba (Deep Learning mentorship)</li>
+    </ul>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Contact</h2>
+    <p>📧 Email: <a href="mailto:kuoldeduot23@gmail.com">kuoldeduot23@gmail.com</a></p>
+    <p>🌐 GitHub: <a href="https://github.com/KuolDuot" target="_blank">github.com/KuolDuot</a></p>
+    <p>📍 Location: Juba, South Sudan</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 SSSLR-T. Open Source under MIT License.</p>
+  </footer>
 </body>
+
 </html>
